@@ -47,6 +47,9 @@ static uint8_t  connection_color[3] = {0}; // RGB color for chase animation
 // Tap for Escape, Hold for Layer 2
 #define ESC_MOD LT(_MOD, KC_ESC)
 
+// Fn key (between right Alt/Cmd and right Ctrl): hold for Layer 2
+#define FN_MOD MO(_MOD)
+
 // ============================================================================
 // FRAME LOOP - Apply all cached LED colors every frame
 // ============================================================================
@@ -378,19 +381,22 @@ void housekeeping_task_user(void) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Layer 0: Windows Base
+     * F7-F12 -> media (prev/play/next, mute/vol-/vol+)
      */
-    [_WINBASE] = LAYOUT(KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_PSCR, KC_DEL, KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_NUM, KC_PSLS, KC_PAST, KC_PMNS, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_P7, KC_P8, KC_P9, KC_PPLS, ESC_MOD, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, KC_P4, KC_P5, KC_P6, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_P1, KC_P2, KC_P3, KC_PENT, KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, KC_RGUI, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_P0, KC_PDOT),
+    [_WINBASE] = LAYOUT(KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_PSCR, KC_DEL, KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_NUM, KC_PSLS, KC_PAST, KC_PMNS, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_P7, KC_P8, KC_P9, KC_PPLS, ESC_MOD, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, KC_P4, KC_P5, KC_P6, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_P1, KC_P2, KC_P3, KC_PENT, KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, FN_MOD, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_P0, KC_PDOT),
 
     /* Layer 1: Mac Base
      * Swapped Ctrl/Opt/Cmd
+     * F7-F12 -> media (prev/play/next, mute/vol-/vol+)
      */
-    [_MACBASE] = LAYOUT(KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_PSCR, KC_DEL, KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_NUM, KC_PSLS, KC_PAST, KC_PMNS, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_P7, KC_P8, KC_P9, KC_PPLS, ESC_MOD, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, KC_P4, KC_P5, KC_P6, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_P1, KC_P2, KC_P3, KC_PENT, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, KC_RGUI, KC_RALT, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_P0, KC_PDOT),
+    [_MACBASE] = LAYOUT(KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_PSCR, KC_DEL, KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_NUM, KC_PSLS, KC_PAST, KC_PMNS, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_P7, KC_P8, KC_P9, KC_PPLS, ESC_MOD, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, KC_P4, KC_P5, KC_P6, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_P1, KC_P2, KC_P3, KC_PENT, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, KC_RGUI, FN_MOD, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_P0, KC_PDOT),
 
-    /* Layer 2: Mod Layer
+    /* Layer 2: Mod Layer (hold Caps or Fn)
      * hjkl -> arrows, q -> `, 1/2/3 -> BT, 4 -> RF, space -> Caps toggle
      * F1 -> Windows base, F2 -> Mac base
+     * F7-F12 -> regular F7-F12
      */
-    [_MOD] = LAYOUT(_______, DF(_WINBASE), DF(_MACBASE), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, LNK_BLE1, LNK_BLE2, LNK_BLE3, LNK_RF, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL, _______, _______, _______, _______, _______, KC_GRV, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_CAPS, _______, _______, _______, _______, _______, _______, _______, _______)};
+    [_MOD] = LAYOUT(_______, DF(_WINBASE), DF(_MACBASE), _______, _______, _______, _______, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, _______, _______, _______, _______, _______, _______, _______, LNK_BLE1, LNK_BLE2, LNK_BLE3, LNK_RF, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL, _______, _______, _______, _______, _______, KC_GRV, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_CAPS, _______, _______, _______, _______, _______, _______, _______, _______)};
 
 // LED configuration for RGB matrix
 const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT] = {{0, A_16, B_16, C_16}, {0, A_15, B_15, C_15}, {0, A_14, B_14, C_14}, {0, A_13, B_13, C_13}, {0, A_12, B_12, C_12}, {0, D_16, E_16, F_16}, {0, D_15, E_15, F_15}, {0, D_14, E_14, F_14}, {0, D_13, E_13, F_13}, {0, D_12, E_12, F_12}, {1, D_16, E_16, F_16}, {1, D_15, E_15, F_15}, {1, D_14, E_14, F_14}, {1, D_13, E_13, F_13}, {1, G_4, H_4, I_4}, {1, D_5, E_5, F_5}, {1, G_5, H_5, I_5}, {1, D_6, E_6, F_6}, {1, G_6, H_6, I_6}, {0, A_1, B_1, C_1}, {0, A_2, B_2, C_2},    {0, A_3, B_3, C_3},    {0, A_4, B_4, C_4},    {0, A_5, B_5, C_5},    {0, A_6, B_6, C_6},    {0, A_7, B_7, C_7},    {0, A_8, B_8, C_8},    {0, A_9, B_9, C_9},    {0, A_10, B_10, C_10}, {0, A_11, B_11, C_11}, {1, D_1, E_1, F_1},    {1, D_2, E_2, F_2},    {1, D_3, E_3, F_3},    {1, D_7, E_7, F_7},
